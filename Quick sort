@@ -1,0 +1,45 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+void QuickSort(int arr[], int l, int r) {
+    if (l >= r)
+        return;
+    int x = arr[r]; 
+    int i = l, j = r;
+    while (i <= j) {
+        while (arr[i] < x ) i++;   
+        while (arr[j] > x ) j--;    
+        if (i <= j) {  
+            if(i<j)
+            {
+                swap(arr[i], arr[j]);
+            }
+                i++;
+                j--;
+        }
+    }
+      if(l<j){   QuickSort(arr,l,j);}
+      if(i<r){QuickSort(arr,i,r);}
+}
+
+int main() {
+    int n;
+    
+    cin>>n;
+   int arr[n];
+    for(int i = 0; i<n; i++)
+    {
+        cin>> arr[i];
+    }
+    QuickSort(arr,0, n-1);
+    for(int i = 0; i<n; i++)
+    {
+        cout<< arr[i] <<" ";
+    }
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    return 0;
+}
