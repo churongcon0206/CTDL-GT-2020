@@ -1,0 +1,57 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+int main() {
+    
+    int n;
+    cin>> n;
+    int arr[n];
+    int dem = 0 ;
+    for(int i = 0; i<n; i++)
+    {
+        cin>> arr[i];
+    }
+    int left = 0;
+    int right = n - 1;
+    int stop = 0;
+    while(left < right)
+       
+    
+    {
+        
+        for (int i = left; i <=  right-1; i++)
+        {
+            if(arr[i] > arr[i + 1] ) 
+           {
+                swap (arr[i], arr[i + 1]);
+                 
+                stop = i;
+                dem= dem + 1;
+            }
+         right = stop;  
+         }
+         for(int i = right; i > left+1 ; i--)
+            {
+                if (arr[i] < arr[i - 1])
+                {
+                    swap(arr[i], arr[i - 1]);
+                    
+                    stop = i;
+                }
+                
+                left = i;
+                dem=dem++;
+            }
+        
+      
+     }
+
+    cout << dem;
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    return 0;
+}
